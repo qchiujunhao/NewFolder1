@@ -7,8 +7,6 @@ from typing import Dict, List, Optional
 
 import can
 
-from .errors import Error
-
 
 class DecodedMessage:
     """A decoded message.
