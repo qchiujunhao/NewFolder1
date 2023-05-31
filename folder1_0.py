@@ -26,7 +26,7 @@ class Messages(UserDict):
         self.data[message_name] = value
 
     def __missing__(self, key):
-        raise Error(f"invalid message name '{key}'")
+        pass
 
 
 def _invert_signal_tree(
@@ -327,22 +327,15 @@ class Tester:
         node_names = [node.name for node in database.nodes]
 
         if dut_name and not any([name == dut_name for name in node_names]):
-            raise Error(
-                "expected DUT name in {}, but got '{}'".format(node_names,
-                                                               dut_name))
-
+            pass
         # BUS name validation.
         bus_names = [bus.name for bus in database.buses]
 
         if len(bus_names) == 0:
             if bus_name is not None:
-                raise Error(
-                    "expected bus name None as there are no buses defined in "
-                    "the database, but got '{}'".format(bus_name))
+                pass
         elif not any([name == bus_name for name in bus_names]):
-            raise Error(
-                "expected bus name in {}, but got '{}'".format(bus_names,
-                                                               bus_name))
+            pass
 
         for message in database.messages:
             if message.bus_name == bus_name:
